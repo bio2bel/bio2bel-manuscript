@@ -1,0 +1,13 @@
+.DS_Store
+.idea
+*.aux
+*.log
+*.out
+*.bcf
+*.run.xml
+*.toc
+*.bbl
+*.fdb_latexmk
+*.blg
+*.fls
+*.dvi

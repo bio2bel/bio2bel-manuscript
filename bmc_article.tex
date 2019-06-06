@@ -1,0 +1,488 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%          <8 June 2012>              %%
+%%                                     %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.html and the instructions for   %%
+%% authors page on the biomed central website                      %%
+%% http://www.biomedcentral.com/info/authors/                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% http://www.miktex.org                                           %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% additional documentclass options:
+%  [doublespacing]
+%  [linenumbers]   - put the line numbers on margins
+
+%%% loading packages, author definitions
+
+%\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+\documentclass{bmcart}
+
+%%% Load packages
+%\usepackage{amsthm,amsmath}
+%\RequirePackage{natbib}
+%\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
+%\RequirePackage{hyperref}
+\usepackage[utf8]{inputenc} %unicode support
+\usepackage{url}
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\includegraphic{}
+\def\includegraphics{}
+
+
+
+%%% Put your definitions there:
+\startlocaldefs
+\endlocaldefs
+
+
+%%% Begin ...
+\begin{document}
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Research}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Integration of Structured Biological Data Sources using Biological Expression Language}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+   addressref={scai,bit},
+   corref={scai},
+   email={charles.hoyt@scai.fraunhofer.de}
+]{\inits{CT}\fnm{Charles Tapley} \snm{Hoyt}}
+\author[
+   addressref={scai,bit},
+]{\inits{D}\fnm{Daniel} \snm{Domingo-Fern\'andez}}
+\author[
+   addressref={scai,bit},
+]{\inits{S}\fnm{Sarah} \snm{Mubeen}}
+\author[
+   addressref={scai},
+]{\inits{J}\fnm{Josep} \snm{Mar\'{\i}n-Ll\'ao}}
+\author[
+   addressref={scai},
+]{\inits{A}\fnm{Andrej} \snm{Konotopez}}
+\author[
+   addressref={scai},
+]{\inits{C}\fnm{Christian} \snm{Ebeling}}
+\author[
+   addressref={scai,bit},
+]{\inits{C}\fnm{Colin} \snm{Birkenbihl}}
+\author[
+   addressref={scai,bit},
+]{\inits{\"O}\fnm{\"Ozlem} \snm{Muslu}}
+\author[
+   addressref={scai,bit},
+]{\inits{B}\fnm{Bradley} \snm{English}}
+\author[
+   addressref={scai,bit},
+]{\inits{S}\fnm{Simon} \snm{M\"uller}}
+\author[
+   addressref={bit},
+]{\inits{M}\fnm{Mauricio} \snm{Pio de Lacerda}}
+\author[
+   addressref={iais,bonn-cs},
+]{\inits{M}\fnm{Mehdi} \snm{Ali}}
+\author[
+   addressref={stanford},
+]{\inits{S}\fnm{Scott} \snm{Colby}}
+\author[
+   addressref={embl,rwth,heidelberg},
+]{\inits{D}\fnm{Den\'es} \snm{T\"urei}}
+\author[
+   addressref={rwth,heidelberg},
+]{\inits{N}\fnm{Nicol\`as} \snm{Palacio-Escat}}
+\author[
+   addressref={scai,bit},
+]{\inits{M}\fnm{Martin} \snm{Hofmann-Apitius}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors' addresses here        %%
+%%                                          %%
+%% Repeat \address commands as much as      %%
+%% required.                                %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\address[id=scai]{
+  \orgname{Department of Bioinformatics, Fraunhofer Institute for Algorithms and Scientific Computing (SCAI)},
+  \street{Konrad Adenauer Strasse},
+  \postcode{53754}
+  \city{Sankt Augustin},
+  \cny{Germany}
+}
+\address[id=bit]{%
+  \orgname{Bonn-Aachen International Center for IT, Rheinische Friedrich-Wilhelms-Universit\"at Bonn},
+  %\street{D\"{u}sternbrooker Weg 20},
+  \postcode{53115}
+  \city{Bonn},
+  \cny{Germany}
+}
+\address[id=iais]{
+  \orgname{Department of Enterprise Information Systems, Fraunhofer Institute for Intelligent Analysis and Information Systems (IAIS)},
+  \street{Konrad Adenauer Strasse},
+  \postcode{53754}
+  \city{Sankt Augustin},
+  \cny{Germany}
+}
+\address[id=bonn-cs]{%
+  \orgname{Department of Computer Science, Rheinische Friedrich-Wilhelms-Universit\"at Bonn},
+  %\street{D\"{u}sternbrooker Weg 20},
+  \postcode{53115}
+  \city{Bonn},
+  \cny{Germany}
+}
+\address[id=stanford]{%
+  \orgname{Department of Chemistry, Stanford University},
+  %\street{D\"{u}sternbrooker Weg 20},
+  \postcode{94305}
+  \city{Stanford},
+  \cny{United States of America}
+}
+\address[id=embl]{%
+  \orgname{European Molecular Biology Laboratory (EMBL), Structural and Computational Biology Unit},
+  \street{Meyerhofstrasse 1},
+  \postcode{69117}
+  \city{Heidelberg},
+  \cny{Germany}
+}
+\address[id=rwth]{%
+  \orgname{Faculty of Medicine, Joint Research Centre for Computational Biomedicine, RWTH Aachen University},
+  \street{MTZ Pauwelsstrasse 19},
+  \postcode{52074}
+  \city{Aachen},
+  \cny{Germany}
+}
+\address[id=heidelberg]{%
+  \orgname{Faculty of Medicine and Heidelberg University Hospital, Institute of Computational Biomedicine, Heidelberg University},
+  \street{Bioquant Im Neuenheimer Feld 267},
+  \postcode{69120}
+  \city{Heidelberg},
+  \cny{Germany}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{artnotes}
+%\note{Sample of title note}     % note to the article
+%\note[id=n1]{Equal contributor} % note, connected to author
+\end{artnotes}
+
+\end{fmbox}% comment this for two column layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Abstract begins here                 %%
+%%                                          %%
+%% Please refer to the Instructions for     %%
+%% authors on http://www.biomedcentral.com  %%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstractbox}
+
+\begin{abstract}
+\parttitle{Background}
+The integration of heterogeneous, multi-scale, and multi-modal knowledge and data has become a common prerequisite for joint analysis to unravel the mechanisms and aetiologies of complex diseases.
+Because of its unique ability to capture this variety, Biological Expression Language (BEL) is well suited to be further used as a platform for semantic integration and harmonization in networks and systems biology.
+\parttitle{Results}
+We have developed numerous independent packages capable of downloading, structuring, and serializing various biological data sources to BEL. Each Bio2BEL package is implemented in the Python programming language and distributed through GitHub (\url{https://github.com/bio2bel}) and PyPI\@.
+\parttitle{Conclusions}
+The philosophy of Bio2BEL encourages reproducibility, accessibility, and democratization of biological databases.
+We present several applications of Bio2BEL packages including their ability to support the curation of pathway mappings, integration of pathway databases, and machine learning applications.
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The keywords begin here                  %%
+%%                                          %%
+%% Put each keyword in separate \kwd{}.     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{keyword}
+\kwd{Data Integration}
+\kwd{Semantic Web}
+\kwd{Biological Expression Language}
+\kwd{Knowledge graphs}
+\end{keyword}
+
+% MSC classifications codes, if any
+%\begin{keyword}[class=AMS]
+%\kwd[Primary ]{}
+%\kwd{}
+%\kwd[; secondary ]{}
+%\end{keyword}
+
+\end{abstractbox}
+%
+%\end{fmbox}% uncomment this for twcolumn layout
+
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Main Body begins here                %%
+%%                                          %%
+%% Please refer to the instructions for     %%
+%% authors on:                              %%
+%% http://www.biomedcentral.com/info/authors%%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%% See the Results and Discussion section   %%
+%% for details on how to create sub-sections%%
+%%                                          %%
+%% use \cite{...} to cite references        %%
+%%  \cite{koon} and                         %%
+%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
+%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% start of article main body
+% <put your article body there>
+
+%%%%%%%%%%%%%%%%
+%% Background %%
+%%
+\section*{Background}
+\input{background}
+
+\section*{Implementation}
+
+Bio2BEL comprises numerous independent open-source Python packages that each enable reproducible access to a given biological data source (Figure 1).
+Each Bio2BEL package contains five components: 1) a definition of the source database or knowledge base, 2) an automated downloader for the data, 3) a parser for the data, 4) a storage and querying system for the data, and 5) a protocol for serializing the data to BEL (Figure 2).
+In this section, we outline the components of a Bio2BEL package and their implementation details.
+
+
+\subsection*{Components of a Bio2BEL package}
+
+As this section outlines the core components and philosophy of a Bio2BEL package, it illustrates the tasks and thought process of a scientific software developer as they implement a new Bio2BEL package.
+
+\subsubsection*{Definition of data}
+
+The first step in generating a Bio2BEL package is to understand the source data.
+This requires determining if the data are publicly accessible, if they are versioned (and how the location changes with versions), and if they are available under a permissive license.
+Bio2BEL packages do not contain data themselves and only refer to the locations of the original data sources.
+For those that are versioned, providers commonly generate symlinks to the most recent version (e.g., InterPro; \url{ftp://ftp.ebi.ac.uk/pub/databases/interpro}).
+These characteristics help minimize licensing issues while enabling the resulting packages to update their content without changing code.
+Then, the developer implements custom code that makes the appropriate interpretations to convert the source data to BEL.
+Below, three types of data that can be readily integrated in BEL are described along with accompanying Table 1.
+
+Taxonomies, Hierarchies, and Ontologies
+The Medical Subject Headings (MeSH; Rogers, 1963) multi-hierarchy can be converted to BEL by generating an isA relationship between each MeSH descriptor and all of its corresponding parents in the associated MeSH tree. Nomenclatures like the Complex Portal (Meldal et al., (2015) also define partOf relations between protein complexes and their substituents. The multi-hierarchy in Gene Ontology (GO; Carbon et al., 2017) can be converted similarly, which contains both isA relations and partOf relations.
+Tabular and Relational Data
+Enzyme inhibitors from ChEMBL and PubChem can be encoded like a(X) directlyDecreases act(p(Y), ma(kin)), and disease-specific differential gene expression can be encoded like path(X) positiveCorrelation r(Y) or path(X) negativeCorrelation r(Y), or path(X) causeNoChange r(Y) depending on whether the gene's expression is up-regulated, down-regulated, or not regulated, respectively. Further, BEL relationships can be extended include metadata (i.e., annotations) describing their quantitative aspects. For example, IC50, EC50, or other kinetic assay measurements as well as provenance and biological contextual information (e.g., original publication, cell line, assay type) can be included with the enzyme inhibition relationships from ChEMBL. Similarly, the log2 fold change and p-values can be included with relationships about differential gene expression.
+Graphs
+Wet-laboratory experimentation can be used to generate networks of directly observed phenomena (e.g., protein-protein interaction networks) and indirectly observed phenomena (e.g., gene co-expression networks). Graphs are often distributed as tabular data to include additional information about their constituent nodes and edges and there is often overlap with the previous data type describing tabular and relational data. In silico experimentation can also be used to derive edges from experimental data sets or even other graphs. For instance, bipartite graphs can be projected to homogeneous graphs consisting of a single entity and edge type as suggested by Sun et al. (2014). Menche et al. (2015) used this strategy and computed a homogenous graph of disease-disease associations from a bipartite graph of diseases and their associated genes.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Backmatter begins here                   %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{backmatter}
+\section*{Ethics approval and consent to participate}
+Not applicable
+
+\section*{Consent for publication}
+Not applicable
+
+\section*{Availability of data and materials}
+Each Bio2BEL package is listed on \url{https://github.com/bio2bel} and automatically acquires relevant data from their respective original biological data sources.
+
+\section*{Competing interests}
+The authors declare that they have no competing interests.
+
+\section*{Funding}
+This work was partially supported by the EU/EFPIA Innovative Medicines Initiative Joint Undertaking under AETIONOMY [grant number 115568], resources of which are composed of financial contribution from the European Union's Seventh Framework Programme (FP7/2007-2013) and EFPIA companies in kind contribution.
+
+This work was also partially supported by the Fraunhofer Society's MAVO program.
+
+The funding bodies did not play a role in the design of the study and collection, analysis, and interpretation of data, nor in writing the manuscript.
+
+\section*{Author's contributions}
+CTH conceived and designed the study.
+CTH, DDF, and SM drafted the manuscript.
+MHA acquired funding and reviewed the manuscript.
+All authors performed data curation and developed computational pipelines for extraction, transformation, and loading of various biological data sources.
+All authors have read and approved the final manuscript.
+
+\section*{Acknowledgements}
+We would like to thank the curators and maintainers of the several databases we have used, without whom none of this work would be possible.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  Bmc_mathpys.bst  will be used to                       %%
+%%  create a .BBL file for submission.                     %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if your bibliography is in bibtex format, use those commands:
+\bibliographystyle{bmc-mathphys} % Style BST file (bmc-mathphys, vancouver, spbasic).
+\bibliography{bmc_article}      % Bibliography file (usually '*.bib' )
+% for author-year bibliography (bmc-mathphys or spbasic)
+% a) write to bib file (bmc-mathphys only)
+% @settings{label, options="nameyear"}
+% b) uncomment next line
+%\nocite{label}
+
+% or include bibliography directly:
+% \begin{thebibliography}
+% \bibitem{b1}
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+\section*{Figures}
+  \begin{figure}[h!]
+  \caption{\csentence{Sample figure title.}
+      A short description of the figure content
+      should go here.}
+      \end{figure}
+
+\begin{figure}[h!]
+  \caption{\csentence{Sample figure title.}
+      Figure legend text.}
+      \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Tables                        %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use of \listoftables is discouraged.
+%%
+\section*{Tables}
+\begin{table}[h!]
+\caption{Sample table title. This is where the description of the table should go.}
+      \begin{tabular}{cccc}
+        \hline
+           & B1  &B2   & B3\\ \hline
+        A1 & 0.1 & 0.2 & 0.3\\
+        A2 & ... & ..  & .\\
+        A3 & ..  & .   & .\\ \hline
+      \end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Additional Files              %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Additional Files}
+  \subsection*{Additional file 1 --- Sample additional file title}
+    Additional file descriptions text (including details of how to
+    view the file, if it is in a non-standard format or the file extension).  This might
+    refer to a multi-page table or a figure.
+
+  \subsection*{Additional file 2 --- Sample additional file title}
+    Additional file descriptions text.
+
+
+\end{backmatter}
+\end{document}
