@@ -324,38 +324,13 @@ We present several applications of Bio2BEL packages including their ability to s
 
 %%%%%%%%%%%%%%%%
 %% Background %%
-%%
+%%%%%%%%%%%%%%%%
+
 \section*{Background}
 \input{background}
 
 \section*{Implementation}
-
-Bio2BEL comprises numerous independent open-source Python packages that each enable reproducible access to a given biological data source (Figure 1).
-Each Bio2BEL package contains five components: 1) a definition of the source database or knowledge base, 2) an automated downloader for the data, 3) a parser for the data, 4) a storage and querying system for the data, and 5) a protocol for serializing the data to BEL (Figure 2).
-In this section, we outline the components of a Bio2BEL package and their implementation details.
-
-
-\subsection*{Components of a Bio2BEL package}
-
-As this section outlines the core components and philosophy of a Bio2BEL package, it illustrates the tasks and thought process of a scientific software developer as they implement a new Bio2BEL package.
-
-\subsubsection*{Definition of data}
-
-The first step in generating a Bio2BEL package is to understand the source data.
-This requires determining if the data are publicly accessible, if they are versioned (and how the location changes with versions), and if they are available under a permissive license.
-Bio2BEL packages do not contain data themselves and only refer to the locations of the original data sources.
-For those that are versioned, providers commonly generate symlinks to the most recent version (e.g., InterPro; \url{ftp://ftp.ebi.ac.uk/pub/databases/interpro}).
-These characteristics help minimize licensing issues while enabling the resulting packages to update their content without changing code.
-Then, the developer implements custom code that makes the appropriate interpretations to convert the source data to BEL.
-Below, three types of data that can be readily integrated in BEL are described along with accompanying Table 1.
-
-Taxonomies, Hierarchies, and Ontologies
-The Medical Subject Headings (MeSH; Rogers, 1963) multi-hierarchy can be converted to BEL by generating an isA relationship between each MeSH descriptor and all of its corresponding parents in the associated MeSH tree. Nomenclatures like the Complex Portal (Meldal et al., (2015) also define partOf relations between protein complexes and their substituents. The multi-hierarchy in Gene Ontology (GO; Carbon et al., 2017) can be converted similarly, which contains both isA relations and partOf relations.
-Tabular and Relational Data
-Enzyme inhibitors from ChEMBL and PubChem can be encoded like a(X) directlyDecreases act(p(Y), ma(kin)), and disease-specific differential gene expression can be encoded like path(X) positiveCorrelation r(Y) or path(X) negativeCorrelation r(Y), or path(X) causeNoChange r(Y) depending on whether the gene's expression is up-regulated, down-regulated, or not regulated, respectively. Further, BEL relationships can be extended include metadata (i.e., annotations) describing their quantitative aspects. For example, IC50, EC50, or other kinetic assay measurements as well as provenance and biological contextual information (e.g., original publication, cell line, assay type) can be included with the enzyme inhibition relationships from ChEMBL. Similarly, the log2 fold change and p-values can be included with relationships about differential gene expression.
-Graphs
-Wet-laboratory experimentation can be used to generate networks of directly observed phenomena (e.g., protein-protein interaction networks) and indirectly observed phenomena (e.g., gene co-expression networks). Graphs are often distributed as tabular data to include additional information about their constituent nodes and edges and there is often overlap with the previous data type describing tabular and relational data. In silico experimentation can also be used to derive edges from experimental data sets or even other graphs. For instance, bipartite graphs can be projected to homogeneous graphs consisting of a single entity and edge type as suggested by Sun et al. (2014). Menche et al. (2015) used this strategy and computed a homogenous graph of disease-disease associations from a bipartite graph of diseases and their associated genes.
-
+\input{implementation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -364,6 +339,7 @@ Wet-laboratory experimentation can be used to generate networks of directly obse
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{backmatter}
+
 \section*{Ethics approval and consent to participate}
 Not applicable
 
