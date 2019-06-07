@@ -51,8 +51,11 @@
 %\RequirePackage{natbib}
 %\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
 %\RequirePackage{hyperref}
-\usepackage[utf8]{inputenc} %unicode support
+\usepackage[utf8]{inputenc} % unicode support
 \usepackage{url}
+\usepackage{graphicx} % used to add figures
+\usepackage{multirow}
+
 %\usepackage[applemac]{inputenc} %applemac support if unicode package fails
 %\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
 
@@ -73,8 +76,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\def\includegraphic{}
-\def\includegraphics{}
+%\def\includegraphic{}
+%\def\includegraphics{}
 
 
 
@@ -332,6 +335,12 @@ We present several applications of Bio2BEL packages including their ability to s
 \section*{Implementation}
 \input{implementation}
 
+\section*{Results}
+\input{results}
+
+\section*{Conclusions}
+\input{conclusions}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% Backmatter begins here                   %%
@@ -412,17 +421,17 @@ We would like to thank the curators and maintainers of the several databases we 
 %%
 %% Do not use \listoffigures as most will included as separate files
 
-\section*{Figures}
-  \begin{figure}[h!]
-  \caption{\csentence{Sample figure title.}
-      A short description of the figure content
-      should go here.}
-      \end{figure}
-
-\begin{figure}[h!]
-  \caption{\csentence{Sample figure title.}
-      Figure legend text.}
-      \end{figure}
+%\section*{Figures}
+%  \begin{figure}[h!]
+%  \caption{\csentence{Sample figure title.}
+%      A short description of the figure content
+%      should go here.}
+%      \end{figure}
+%
+%\begin{figure}[h!]
+%  \caption{\csentence{Sample figure title.}
+%      Figure legend text.}
+%      \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
@@ -432,17 +441,7 @@ We would like to thank the curators and maintainers of the several databases we 
 
 %% Use of \listoftables is discouraged.
 %%
-\section*{Tables}
-\begin{table}[h!]
-\caption{Sample table title. This is where the description of the table should go.}
-      \begin{tabular}{cccc}
-        \hline
-           & B1  &B2   & B3\\ \hline
-        A1 & 0.1 & 0.2 & 0.3\\
-        A2 & ... & ..  & .\\
-        A3 & ..  & .   & .\\ \hline
-      \end{tabular}
-\end{table}
+% \section*{Tables}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
@@ -450,15 +449,14 @@ We would like to thank the curators and maintainers of the several databases we 
 %%                               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Additional Files}
-  \subsection*{Additional file 1 --- Sample additional file title}
-    Additional file descriptions text (including details of how to
-    view the file, if it is in a non-standard format or the file extension).  This might
-    refer to a multi-page table or a figure.
-
-  \subsection*{Additional file 2 --- Sample additional file title}
-    Additional file descriptions text.
-
+%\section*{Additional Files}
+%  \subsection*{Additional file 1 --- Sample additional file title}
+%    Additional file descriptions text (including details of how to
+%    view the file, if it is in a non-standard format or the file extension).  This might
+%    refer to a multi-page table or a figure.
+%
+%  \subsection*{Additional file 2 --- Sample additional file title}
+%    Additional file descriptions text.
 
 \end{backmatter}
 \end{document}

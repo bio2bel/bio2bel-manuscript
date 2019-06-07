@@ -1,0 +1,8 @@
+While the development of Bio2BEL has addressed the lack of defined schemata, data standardization, annotation of entities with classes, and application of controlled vocabularies to relations in numerous biological databases by converting them to BEL, several considerations remain.
+The approaches taken by Bio2RDF, Pathway Commons, and now Bio2BEL can be categorized as data warehousing.
+An alternative strategy, data federation, attempts to combine disparate biological data sources using SPARQL endpoints (e.g., DisGeNet-RDF (Queralt-Rosinach et al., 2016), UniProt (Redaschi et al., 2009), EBI (Jupp et al., 2014)), RESTful APIs (e.g.,~BioServices (Cokelaer et al., 2013), BioThings, Orange Bioinformatics (Curk et al., 2005)), and more recently, GraphQL (\url{https://graphql.org}).
+Bio2BEL does not directly address data federation, but other aspects of the BEL ecosystem such as BEL Commons (Hoyt et al., 2018b) have exposed RESTful APIs for manipulating BEL that might also be useful for GraphQL\@.
+However, the several attempts at converting BEL to RDF have suffered from relatively low adoption; and while a conversion to RDF enables querying with SPARQL, BEL lacks a dedicated query language that can leverage the rich aspects of its statements beyond their subjects, predicates, and objects.
+
+Finally, it remains that like any format, consumers of BEL must make their own transformations appropriate for their scientific applications.
+We are not discouraged by this fact, and believe that Bio2BEL is a step towards enabling more computational scientists easy access to a larger portion of the wealth of available structured biological knowledge resources.

@@ -1,0 +1,95 @@
+After describing the Bio2BEL framework and the requirements for implementing new Bio2BEL packages, we present a list of the independent Bio2BEL packages that we have already implemented in Table~\ref{tab:summary}.
+We note that several of the data sources have already been included in other meta-databases like Pathway Commons and Bio2RDF, but we have chosen to implement the Bio2BEL packages using the source data rather than deriving results from these databases to provide a complementary resource for those familiar with and interested in using BEL\@.
+This choice also reduces dependencies on other projects that may not be maintained and protects against data loss during multiple conversions.
+
+While there are thousands of high quality databases available, including a high percentage that do not fit into the schemata defined by Pathway Commons, Bio2RDF, or other meta-databases that are more appropriate for BEL, we have prioritized them as they become have become relevant for our specific use-cases, but also are open to suggestions via the issue tracker on \url{https://github.com/bio2bel/bio2bel/issues}.
+Below, we present four of these use cases.
+
+\begin{table}[h!]
+\caption{A non-exhaustive list of biological data sources already available as Bio2BEL packages}
+\label{tab:summary}
+\begin{tabular}{llll}
+    \hline
+    Name           & Description                                                & Terms  & Relations \\
+    \hline
+    adeptus        & Disease-specific differential gene expression              &        & 4943      \\
+    chebi          & Chemical multi-hierarchy                                   & 138863 &           \\
+    compath        & Pathway-pathway equivalences and hierarchies               &        & 1795      \\
+    ddr            & Disease-disease relationships                              &        & 2997      \\
+    drugbank       & Drug-target interactions                                   & 11292  & 25199     \\
+    entrez         & Genes and orthologies                                      & 388986 &           \\
+    excape         & Chemical-target interactions                               &        & 3550000   \\
+    expasy         & Enzyme classification and membership                       & 6718   & 243914    \\
+    famplex        & Protein family and complex hierarchy                       &        & 4462      \\
+    flybase        & Drosophila gene nomenclature and orthologies               & 245565 &           \\
+    go             & Biological process multi-hierarchy                         & 45018  & 92905     \\
+    hgnc           & Human gene nomenclature and orthologies to mouse and rat   & 42741  & 38360     \\
+    hgncgenefamily & Human gene-gene family memberships                         & 1157   & 23881     \\
+    hippie         & Protein-protein physical interactions                      &        & 340629    \\
+    homologene     & Gene ortholog group memberships                            & 30492  & 131558    \\
+    hsdn           & Disease-symptom associations                               &        & 10246     \\
+    interpro       & Protein-family and protein-domain memberships              & 36524  & 34611     \\
+    kegg           & Protein-pathway memberships                                & 330    & 30346     \\
+    mgi            & Mouse genome nomenclature                                  & 300499 &           \\
+    mirbase        & MicroRNA nomenclature                                      & 38589  &           \\
+    mirtarbase     & miRNA-target interactions                                  &        & 366110    \\
+    msig           & Gene-gene set memberships                                  & 17810  & 2443391   \\
+    pfam           & Protein-protein family and protein family-clan memberships & 17929  &           \\
+    phewascatalog  & Gene-disease relationships                                 &        & 364667    \\
+    phosphosite    & Post-translational modifications                           &        & 553716    \\
+    reactome       & Protein-pathway and chemical-pathway memberships           & 23621  & 137768    \\
+    rgd            & Rat gene nomenclature                                      & 44970  &           \\
+    sider          & Drugs' side effects and indications                        &        & 339742    \\
+    wikipathways   & Protein-pathway memberships                                & 513    & 22115     \\
+\end{tabular}
+\end{table}
+
+\subsection*{Mapping Concepts Between Pathway Databases with ComPath}
+
+Pathway databases have become one of the most frequently used biological data sources in the interpretation of high-throughput \textit{-omics} experiments.
+Connecting pathway knowledge across the hundreds of databases developed in recent decades would not only provide a more comprehensive overview of the underlying biology they represent, but would also enable performing identical analyses on different databases.
+However, integrative approaches which combine databases lack the equivalence mappings between similar concepts and qualifiers that are necessary to compare between analyses run using one or another database.
+There are several reasons that explain the lack of mappings between databases, such as the absence of a common pathway nomenclature, differences in databases' scopes, and the lack of clear pathway boundary definitions.
+Furthermore, generating high quality mappings requires a significant amount of manual effort since curators must individually investigate each pair of pathways and assess whether the pair comprises related or similar pathways occurring in the same biological context.
+
+Three Bio2BEL packages were implemented for major pathway databases (i.e., KEGG, Reactome, and WikiPathways) and extended with tools to support the first curation of mappings between their equivalent and hierarchically related pathways during the ComPath project~\cite{Domingo-Fernandez2018}.
+Each were used to store and harmonize the data underlying ComPath and its accompanying web curation interface (\url{https://compath.scai.fraunhofer.de}).
+Though the databases of the Bio2BEL packages are detached from the ComPath web application, they can be used to integrate additional biological data sources into ComPath in the future and also to regularly update their content over time~\cite{Wadi2016}; thus, facilitating the revisitation and reevaluation of the mappings.
+
+\subsection*{Harmonizing Pathway Databases into a Common Schema with PathMe}
+
+The most direct and effective approach in addressing issues of interoperability of pathway databases is in the transformation of various database formats into a common schema.
+Although this approach has been exemplified by previously mentioned databases (e.g., OmniPath, Pathway Commons, and graphite~\cite{Sales2019}), there have been several limitations which have impeded a complete harmonization of pathways from distinct biological data sources.
+Specifically, this requires: the harmonization of biological entities to identifiers from a common nomenclature (e.g., Entrez Gene or HGNC for human genes, ChEBI or PubChem for chemicals, etc.), the normalization of biological relationships, and an underlying format which serves as the unifying schema.
+However, a complete harmonization risks the loss of some information in the transformation process.
+For instance, pathway knowledge representations can span across several scales, such as molecular events, cellular processes, and phenotypes, which various formats accommodate for in varying degrees.
+While existing biological data sources can address certain aspects of these steps, addressing all of these steps would enable the complete interoperability of pathway databases.
+Accordingly, the PathMe software was designed to harmonize pathway databases into BEL as a common representation schema with Bio2BEL at its core~\cite{Domingo-Fernandez2019}.
+
+The selection of BEL lies in its flexibility to incorporate a wide range of biological entities from standardized nomenclatures and their relationships, all on a multi-modal scale.
+The transformation of various pathway formats into BEL through PathMe is facilitated by the Bio2BEL framework by allowing for the automation of the acquisition of the biological data sources which can change frequently.
+By integrating PathMe and Bio2BEL, any number of pathway resources included in the latter can be transformed into BEL\@.
+In doing so, users can enrich pathway knowledge by leveraging multiple, equivalent pathway representations from the various biological data sources included in Bio2BEL and analyze their own networks alongside canonical pathway ones.
+In a later publication, we plan to demonstrate the utility of combining Bio2BEL packages to produce an integrative pathway resource.
+Similarly to the recent comparison of pathway activity measurement tools by Lim et al. (2018), we will benchmark the performance of each of these resources both individually and combined on functional pathway enrichment and classification tasks applied to cancer genome and patient data.
+
+\subsection*{Applications of Network Representation Learning with BioKEEN}
+
+The integration of numerous biological databases into a common schema gives rise to large, rich, heterogeneous knowledge graphs to which a variety of statistical and machine learning methodologies can be applied.
+One family of approaches, network representation learning (NRL), has been shown to be useful for clustering, entity disambiguation, and link prediction tasks (Nickel et al., 2016).
+As new machine learning models are published for accomplishing these tasks, several implementations using the currently popular machine learning frameworks TensorFlow (Abadi et al. 2016) and PyTorch (Paszke et al., 2017) provide reference implementations.
+
+We developed BioKEEN as an extension to the previously developed NRL package, PyKEEN, to enable it to directly acquire and preprocess BEL knowledge graphs, namely those generated by Bio2BEL (Ali et al., 2018).
+One of the original goals of PyKEEN was to democratize NRL methods by facilitating those less familiar with the relevant mathematics and programming backgrounds to apply and evaluate them. We have continued this philosophy with BioKEEN to allow scientists to specify the Bio2BEL packages they would like to include in their analysis that are either hosted on PyPI, GitHub, or already installed as custom local packages. The usage of Bio2BEL allows scientists using NRL as a component of a more complex analytical pipeline to have the ability to not only re-run analyses in a reproducible manner, but also make use of the ability to acquire updated data when it becomes available.
+
+Along with our previous publication, we provided several demonstrations including the prediction of novel protein-protein interactions using a model trained with the BioKEEN package for the Human Integrated Protein-Protein Interaction rEference (HIPPIE; Alanis-Lobato et al., 2017), the prediction of pathway mappings using ComPath, and the prediction of disease-symptom associations using the Bio2BEL package for the HSDN (Zhou et al., 2014) provided by Himmelstein et al. (2017) with Rephetio (\url{https://het.io}).
+Later, we plan to apply BioKEEN to combinations of Bio2BEL repositories to support other biologically relevant link prediction tasks such as drug repositioning.
+
+\subsection*{Interoperability with Other Projects}
+
+The Integrated Network and Dynamical Reasoning Assembler (INDRA; Gyori et al., 2017) integrates several databases including those covering physical interactions (e.g., BioGrid; Chatr-Aryamontri et al., 2017), signaling (e.g., SIGNOR; Perfetto et al. 2016), curated drug targets (e.g., HMS LINCS small molecule target relationship database; \url{://lincs.hms.harvard.edu}), and experimental drug affinities (e.g., Target Affinity Spectrum; Moret et al., 2018) in order to support generation of dynamical models.
+Following the recent development of a converter between BEL and INDRA (Hoyt et al., 2019), these biological data sources can be indirectly made available as BEL, and all Bio2BEL packages can be integrated in INDRA\@.
+
+Similarly, we are collaborating with the researchers developing OmniPath to structure their data acquisition pipelines as a Bio2BEL package, which is currently under development.
+Notably, OmniPath encompasses several biological data sources related to protein-protein interactions, transcriptional regulation, post-translational modifications, ligand-receptor interactions, and protein complexes, and others.
+This resource is complementary to content already available through Bio2BEL, providing a more comprehensive integration of the extensive publicly available biological data sources.
